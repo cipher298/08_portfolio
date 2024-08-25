@@ -1,8 +1,54 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../variants';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const schema = z.object({
+  user_name: z.string().min(1, 'Name cannot be blank'),
+  user_email: z.string().email('Invalid email address'),
+  message: z.string().min(1, 'Message cannot be blank'),
+});
 
 const Contact = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      user_name: '',
+      user_email: '',
+      message: '',
+    },
+  });
+
+  const form = useRef();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_mgil7h8', 'template_2139yfj', form.current, {
+        publicKey: '1AjMdTJkplfZEpJxk',
+      })
+      .then(
+        () => {
+          toast.success('Sent message successfully!');
+          reset();
+        },
+        (error) => {
+          toast.error('Failed to send the message. Please try again.');
+        },
+      );
+  };
+
   return (
     <section className="section" id="contact">
       <div className="container mx-auto">
@@ -37,29 +83,75 @@ const Contact = () => {
               once: false,
               amount: 0.3,
             }}
-            className="flex flex-col items-start p-6 pb-6 border lg:flex-1 rounded-2xl gap-y-4"
+            ref={form}
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col items-start justify-between p-4 pb-4 border lg:flex-1 rounded-2xl gap-y-2"
           >
-            <input
-              className="w-full py-3 transition-all bg-transparent border-b outline-none placeholder:text-white focus:border-accent"
-              type="text"
-              placeholder="Your name..."
-            ></input>
+            <div className="flex flex-col w-full gap-4">
+              {/* user name */}
+              <input
+                className="w-full py-2 transition-all bg-transparent border-b outline-none placeholder:text-white focus:border-accent"
+                type="text"
+                name="user_name"
+                placeholder="Your name..."
+                {...register('user_name')}
+              ></input>
+              {errors.user_name && (
+                <p className="text-red-500" style={{ marginTop: '-16px' }}>
+                  {errors.user_name.message}
+                </p>
+              )}
 
-            <input
-              className="w-full py-3 transition-all bg-transparent border-b outline-none placeholder:text-white focus:border-accent"
-              type="text"
-              placeholder="Your email..."
-            ></input>
+              {/* user email */}
+              <input
+                className="w-full py-2 transition-all bg-transparent border-b outline-none placeholder:text-white focus:border-accent"
+                type="email"
+                name="user_email"
+                placeholder="Your email..."
+                {...register('user_email')}
+              ></input>
+              {errors.user_email && (
+                <p className="text-red-500" style={{ marginTop: '-16px' }}>
+                  {errors.user_email.message}
+                </p>
+              )}
 
-            <textarea
-              className="w-full py-12 mb-12 transition-all bg-transparent border-b outline-none resize-none placeholder:text-white focus:border-accent"
-              placeholder="Your message..."
-            ></textarea>
+              {/* message */}
+              <textarea
+                className="w-full transition-all bg-transparent border-b outline-none resize-none pb-28 placeholder:text-white focus:border-accent"
+                name="message"
+                placeholder="Your message..."
+                {...register('message')}
+              ></textarea>
+              {errors.message && (
+                <p className="text-red-500" style={{ marginTop: '-16px' }}>
+                  {errors.message.message}
+                </p>
+              )}
+            </div>
 
-            <button className="btn btn-lg">Send message</button>
+            <div>
+              {/* button send message */}
+              <button type="submit" className="btn btn-lg">
+                Send message
+              </button>
+            </div>
           </motion.form>
         </div>
       </div>
+
+      {/* toast container */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </section>
   );
 };

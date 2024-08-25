@@ -5,6 +5,7 @@ import { FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../variants';
+import { Link } from 'react-scroll';
 
 const Banner = () => {
   return (
@@ -79,8 +80,20 @@ const Banner = () => {
               }}
               className="flex items-center mx-auto mb-6 max-w-max gap-x-6 lg:mx-0"
             >
-              <button className="btn btn-lg">Contact Me</button>
-              <a href="#" className="text-gradient btn-link">
+              <Link
+                to="contact"
+                activeClass="active"
+                smooth={true}
+                spy={true}
+                className="flex items-center justify-center cursor-pointer"
+              >
+                <button className="btn btn-lg">Contact Me</button>
+              </Link>
+
+              <a
+                href="https://drive.google.com/file/d/1I2AVHBHW684D2lXY6SPDq0ezzYaF1nD_/view?usp=sharing"
+                className="text-gradient btn-link"
+              >
                 My Portfolio
               </a>
             </motion.div>
