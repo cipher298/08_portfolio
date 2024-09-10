@@ -31,9 +31,7 @@ const Contact = () => {
 
   const form = useRef();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
+  const onSubmit = () => {
     emailjs
       .sendForm('service_mgil7h8', 'template_2139yfj', form.current, {
         publicKey: '1AjMdTJkplfZEpJxk',
