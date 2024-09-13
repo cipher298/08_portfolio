@@ -23,7 +23,7 @@ const Info = () => {
               <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path>
             </svg>
           </div>
-          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-white">
+          <h3 className="h3 mb-0 text-lg font-medium leading-6 text-gray-900 dark:text-white">
             My Address
           </h3>
         </div>
@@ -56,7 +56,7 @@ const Info = () => {
               <path d="M15 3a6 6 0 0 1 6 6"></path>
             </svg>
           </div>
-          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-white">
+          <h3 className="h3 mb-0 text-lg font-medium leading-6 text-gray-900 dark:text-white">
             Contact
           </h3>
         </div>
@@ -90,7 +90,7 @@ const Info = () => {
               <path d="M12 7v5l3 3"></path>
             </svg>
           </div>
-          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-white">
+          <h3 className="h3 mb-0 text-lg font-medium leading-6 text-gray-900 dark:text-white">
             Profile
           </h3>
         </div>
@@ -103,7 +103,7 @@ const Info = () => {
           </a>
           <br />
           <a
-            href="https://drive.google.com/file/d/1I2AVHBHW684D2lXY6SPDq0ezzYaF1nD_/view?usp=sharing"
+            href="https://drive.google.com/file/d/1QalUwd_cwpzWOOdxXzbawsyuBZI17WqE/view?usp=drive_link"
             className="text-gray-600 dark:text-slate-400"
           >
             Resume

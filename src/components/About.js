@@ -78,7 +78,7 @@ const About = () => {
               </Link>
 
               <a
-                href="https://drive.google.com/file/d/1I2AVHBHW684D2lXY6SPDq0ezzYaF1nD_/view?usp=sharing"
+                href="https://drive.google.com/file/d/1QalUwd_cwpzWOOdxXzbawsyuBZI17WqE/view?usp=drive_link"
                 className="text-gradient btn-link"
               >
                 My Portfolio

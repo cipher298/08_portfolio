@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import avatar from '../assets/avatar.png';
-import { FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../variants';
@@ -91,7 +91,7 @@ const Banner = () => {
               </Link>
 
               <a
-                href="https://drive.google.com/file/d/1I2AVHBHW684D2lXY6SPDq0ezzYaF1nD_/view?usp=sharing"
+                href="https://drive.google.com/file/d/1QalUwd_cwpzWOOdxXzbawsyuBZI17WqE/view?usp=drive_link"
                 className="text-gradient btn-link"
               >
                 My Portfolio
@@ -107,15 +107,12 @@ const Banner = () => {
                 once: false,
                 amount: 0.7,
               }}
-              className="flex text-[20px] gap-x-6 max-w-max mx-auto lg:mx-0"
+              className="flex text-3xl lg:text-4xl gap-x-6 max-w-max mx-auto lg:mx-0"
             >
-              <a href="#">
-                <FaFacebook />
-              </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/voxuanthinh/">
                 <FaLinkedin />
               </a>
-              <a href="#">
+              <a href="https://github.com/cipher298">
                 <FaGithub />
               </a>
             </motion.div>
